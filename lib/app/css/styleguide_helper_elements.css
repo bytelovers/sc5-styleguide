@@ -60,7 +60,7 @@ Styleguide 5.2 */
   background: #000.1;
 }
 
-sg-common-class-wrapper {
+.sg-common-class-wrapper {
   box-sizing: border-box;
   @mixin reset;
 }

@@ -16,9 +16,6 @@ $fa-version: '4.2.0';
 @import 'components/colorpicker.css';
 @import 'components/github.css';
 
-$footer-padding: 2em;
-$footer-logo-height: 42px;
-
 html,
 body.sg {
   width: 100%;
@@ -71,16 +68,12 @@ markup:
 Styleguide 1.1.1
 */
 
-$default-action-light: lighten($default-action-color, $action-color-change);
-
 .color_lighten {
-  background-color: $default-action-light;
+  background-color: var(--default-action-light);
 }
 
-$default-action-dark: color($default-action-color blackness($action-color-change));
-
 .color_darken {
-  background-color: $default-action-dark;
+  background-color: var(--default-action-dark);
 }
 
 /*
@@ -109,7 +102,6 @@ h4.sg,
 h5.sg {
   @mixin default-font;
   font-family: var(--primary-font);
-  font-family: $primary-font;
   font-weight: normal;
   font-style: normal;
   line-height: 1.2;
@@ -173,15 +165,14 @@ a.sg {
   cursor: pointer;
   text-decoration: none;
   color: var(--default-action-color);
-  color: $default-action-color;
 }
 
 a.sg:hover {
-  color: $default-action-light;
+  color: var(--default-action-light);
 }
 
 a.sg:active {
-  color: $default-action-dark;
+  color: var(--default-action-dark);
 }
 
 p.sg {
@@ -244,24 +235,22 @@ button.sg {
   color: white;
   border-radius: 5px;
   background-color: var(--default-action-color);
-  background-color: $default-action-color;
 
   &:hover {
-    background-color: color($default-action-color lightness($action-color-change));
+    background-color: color(var(--default-action-color) lightness(var(--action-color-change)));
   }
   &:active {
-    background-color: color($default-action-color blackness($action-color-change));
+    background-color: color(var(--default-action-color) blackness(var(--action-color-change)));
   }
 
   &.sg-primary {
     color: white;
     background-color: var(--primary-action-color);
-    background-color: $primary-action-color;
     &:hover {
-      background-color: color($primary-action-color lightness($action-color-change));
+      background-color: color(var(--primary-action-color) lightness(var(--action-color-change)));
     }
     &:active {
-      background-color: color($primary-action-color blackness($action-color-change));
+      background-color: color(var(--primary-action-color) blackness(var(--action-color-change)));
     }
   }
 
@@ -270,7 +259,6 @@ button.sg {
 
     color: #999;
     background-color: var(--secondary-color);
-    background-color: $secondary-color;
   }
 }
 
@@ -298,7 +286,6 @@ Styleguide 2.4
 input.sg {
   @mixin default-font;
   font-family: var(--secondary-font);
-  font-family: $secondary-font;
   font-weight: 300;
 
   margin: 8px;
@@ -306,11 +293,9 @@ input.sg {
   padding: .5em;
 
   border: 1px solid var(--secondary-color);
-  border: 1px solid $secondary-color;
 
   &:focus {
     background-color: var(--tertiary-color);
-    background-color: $tertiary-color;
     border: 1px solid $secondary-color;
   }
 }
@@ -353,19 +338,18 @@ Styleguide 3.1.1
   display: flex;
   position: relative;
   overflow: hidden;
-  max-width: $content-max-width;
+  max-width: var(--content-max-width);
   margin: 0 auto;
-  padding: $wrapper-vertical-padding $content-margin $wrapper-vertical-padding $min-content-margin;
+  padding: var(--wrapper-vertical-padding) var(--content-margin) var(--wrapper-vertical-padding) var(--min-content-margin);
   @media (--mobile) {
     display: block;
     padding: 0;
   }
   &.designerToolVisible {
     margin-right: var(--designer-tool-width);
-    margin-right: $designer-tool-width;
   }
 
-  .sg.sg-body {
+  & .sg.sg-body {
     display: inline-block;
     width: 70%;
     min-height: 680px;
@@ -376,17 +360,17 @@ Styleguide 3.1.1
       width: 100%;
     }
     // Remove top margin from first header in markdown
-    .sg.sg-heading:nth-of-type(1) {
+    & .sg.sg-heading:nth-of-type(1) {
       margin-top: 0;
       padding-top: 0;
     }
   }
 
-  .sg.full-width {
+  & .sg.full-width {
     width: 100%;
   }
 
-  .sg.sg-side-nav {
+  & .sg.sg-side-nav {
     display: inline-block;
     width: 30%;
     opacity: 1;
@@ -400,14 +384,14 @@ Styleguide 3.1.1
       transition: opacity .4s cubic-bezier(0.000, 0.995, 0.990, 1.000);
     }
 
-    .sg.option {
+    & .sg.option {
       text-align: center;
-      a {
+      & a {
         color: white;
       }
     }
 
-    li {
+    & li {
       list-style: none;
       @media (--mobile) {
         background: #8b8b8b;
@@ -422,7 +406,8 @@ Styleguide 3.1.1
         margin: 0;
       }
       padding: 0;
-      background: rgba(#fff, 1);
+      background: #fff;
+      opacity: 1;
       & .sg-nav-subsection:before {
         position: absolute;
         top: 0;
@@ -435,7 +420,7 @@ Styleguide 3.1.1
 
         content: '';
 
-        background: lighten($primary-color, 75%);
+        background: lighten(var(--primary-color), 75%);
 
         transition: all .4s ease-out;
       }
@@ -453,7 +438,7 @@ Styleguide 3.1.1
 
         content: '+';
 
-        background: lighten($primary-color, 75%);
+        background: lighten(var(--primary-color), 75%);
 
         transition: all .4s ease-out;
       }
@@ -471,7 +456,7 @@ Styleguide 3.1.1
 
         content: '-';
 
-        background: lighten($primary-color, 75%);
+        background: lighten(var(--primary-color), 75%);
 
         transition: all .4s ease-out;
       }
@@ -486,13 +471,13 @@ Styleguide 3.1.1
 
     & .sg-nav-section li a {
       @media (--mobile) {
-        color: $header-text-color;
+        color: var(--header-text-color);
         margin-left: 5px;
       }
     }
 
     & .sg-nav-section > li > a {
-      font-family: $secondary-font;
+      font-family: var(--secondary-font);
       line-height: 2em;
 
       position: relative;
@@ -513,7 +498,7 @@ Styleguide 3.1.1
 
         content: '';
 
-        background: lighten($primary-color, 75%);
+        background: lighten(var(--primary-color), 75%);
 
         transition: all .4s ease-out;
       }
@@ -530,20 +515,20 @@ Styleguide 3.1.1
 
         content: '';
 
-        background: rgba($secondary-color, 1);
+        background: var(--secondary-color);
       }
 
       &:hover,
       &.active {
         &:before {
-          background: $primary-color;
+          background: var(--primary-color);
         }
       }
     }
-    .sg-nav-subsubsection {
+    & .sg-nav-subsubsection {
       padding-left: 10px;
     }
-    .sg-nav-subsection {
+    & .sg-nav-subsection {
       padding-left: 30px;
       & li {
         border: none;
@@ -557,19 +542,20 @@ Styleguide 3.1.1
     }
   }
 
-  .sg.animate-show {
+  & .sg.animate-show {
     opacity: 0;
     z-index: -1;
     width: 0;
   }
 
-  .sg.side-nav-toggle {
+  & .sg.side-nav-toggle {
     font-family: var(--secondary-font);
     font-style: normal;
     position: absolute;
     top: 2.0em;
     cursor: pointer;
-    color: rgba(var(--primary-color), .2);
+    color: var(--primary-color);
+    opacity: .2;
     border-radius: 5px;
     user-select: none;
     transition: color .3s ease-in;
@@ -584,12 +570,14 @@ Styleguide 3.1.1
       width: 10em;
       content: 'Toggle navigation';
       opacity: 0;
-      color: rgba($primary-color, .2);
+      color: var(--primary-color);
+      opacity: .2;
       transition: opacity .3s ease-in;
     }
 
     &:hover {
-      color: rgba($primary-color, .7);
+      color: var(--primary-color);
+      opacity: .7;
       &:before {
         opacity: 1;
       }
@@ -630,21 +618,18 @@ Styleguide 3.2.1
   padding: 0;
   color: #fff;
   background: var(--header-background-color);
-  background: $header-background-color;
+  background: var(--header-background-color);
 
-  pre {
+  & pre {
     clear: both;
   }
 
-  .sg-inner {
+  & .sg-inner {
     box-sizing: border-box;
     padding: 0 var(--min-content-margin) 0 var(--min-content-margin);
-    padding: 0 $min-content-margin 0 $min-content-margin;
     height: 100%;
-    padding-right: calc(var(--content-margin) - var($min-content-margin));
-    padding-right: calc($content-margin - $min-content-margin);
+    padding-right: calc(var(--content-margin) - var(--min-content-margin));
     max-width: var(--content-max-width);
-    max-width: $content-max-width;
     margin-left: auto;
     margin-right: auto;
 
@@ -662,7 +647,7 @@ Styleguide 3.2.1
     }
   }
 
-  .sg-title {
+  & .sg-title {
     min-height: 70px;
     float: left;
     padding-bottom: 20px;
@@ -670,19 +655,16 @@ Styleguide 3.2.1
     padding: 0;
     height: 100%;
 
-    h1 {
+    & h1 {
       font-family: var(--secondary-font);
-      font-family: $secondary-font;
       font-style: normal;
       font-size: 1.8em;
       font-weight: 100;
       margin: 0;
       color: var(--header-text-color);
-      color: $header-text-color;
       line-height: var(--header-height);
-      line-height: $header-height;
 
-      span {
+      & span {
         font-size: .9em;
       }
     }
@@ -695,19 +677,18 @@ Styleguide 3.2.1
 
   &.designerToolVisible .sg-inner {
     margin-right: var(--designer-tool-width);
-    margin-right: $designer-tool-width;
   }
 
   @media (--mobile) {
     height: auto;
   }
 
-  .sg.sg-search-container {
+  & .sg.sg-search-container {
 
     @media (--mobile) {
       clear: both;
     }
-    .sg-hamburger {
+    & .sg-hamburger {
       display: none;
       float: left;
       cursor: pointer;
@@ -731,28 +712,27 @@ Styleguide 3.2.1
       }
 
       &-active {
-        .sg-hamburger-item {
+        & .sg-hamburger-item {
           transition: transform 0.15s ease-in-out 0.2s, top 0.1s ease-in-out, opacity 0.25s ease-in-out;
         }
-        .top {
+        & .top {
           top: 13px;
           transform: rotate(135deg);
         }
-        .middle {
+        & .middle {
           opacity: 0;
           transform: rotate(135deg);
         }
-        .bottom {
+        & .bottom {
           top: -13px;
           transform: rotate(225deg);
         }
       }
     }
 
-    .sg.sg-search-field {
+    & .sg.sg-search-field {
       margin-top: calc(var(--header-height)/2 - 18px);
-      margin-top: calc($header-height/2 - 18px);
-      box-sizing : border-box;
+      box-sizing: border-box;
       float: right;
       @media (--mobile) {
         margin-left: 0;
@@ -762,9 +742,9 @@ Styleguide 3.2.1
       }
     }
   }
-  .sg.side-nav-search .sg.sg-search-field {
+  & .sg.side-nav-search .sg.sg-search-field {
     margin-top: calc(var(--header-height)/2 - 18px);
-    box-sizing : border-box;
+    box-sizing: border-box;
     float: right;
     @media (--mobile) {
       margin-left: 24px;
@@ -797,7 +777,6 @@ Styleguide 3.2.2
   font-weight: 300;
 
   padding: var(--footer-padding);
-  padding: $footer-padding;
 
   text-align: center;
   border-top: 2px solid #333;
@@ -808,7 +787,6 @@ Styleguide 3.2.2
 .sg.sg-footer .sg-logo {
   width: 42px;
   height: var(--footer-logo-height);
-  height: $footer-logo-height;
   margin-top: -5px;
 
   vertical-align: middle;
@@ -860,7 +838,6 @@ Styleguide 3.3.1
   display: none;
   clear: both;
   background-color: var(--nav-background-color);
-  background-color: $nav-background-color;
   z-index: 8000;
   width: 100%;
 }
@@ -871,104 +848,86 @@ Styleguide 3.3.1
 
 .sg.sg-top-nav-menu {
   padding: 0 var(--min-content-margin) 0 var(--min-content-margin);
-  padding: 0 $min-content-margin 0 $min-content-margin;
   margin: 0;
-  max-width: $content-max-width;
+  max-width: var(--content-max-width);
   margin-left: auto;
   margin-right: auto;
   list-style-type: none;
 
-  .designerToolVisible & {
+  & .designerToolVisible & {
     margin-right: var(--designer-tool-width);
-    margin-right: $designer-tool-width;
   }
 
-  li {
+  & li {
     @mixin default-font;
     background-color: var(--nav-button-color);
-    background-color: $nav-button-color;
     float:left;
   }
-  li a {
+  & li a {
     padding: 0 20px;
     display: block;
     text-decoration: none;
   }
   & > li > a {
     color: var(--nav-button-text-color);
-    color: $nav-button-text-color;
 
     &:hover, &.active {
       color: var(--active-nav-button-text-color);
-      color: $active-nav-button-text-color;
       background: var(--active-nav-button-color);
-      background: $active-nav-button-color;
     }
     &.sub-active {
        border: var(--active-nav-button-color) solid;
-       border: $active-nav-button-color solid;
        border-width: 0 0 3px;
        line-height: calc(var(--menu-height) - 3px);
-       line-height: calc($menu-height - 3px);
     }
     line-height: var(--menu-height);
-    line-height: $menu-height;
-    .sg-ref {
-      color: $nav-button-ref-color;
+    & .sg-ref {
+      color: var(--nav-button-ref-color);
     }
   }
 
   /* Submenu */
-  ul {
+  & ul {
     z-index: 8000;
     position: absolute;
     left: -9999px;
     top: -9999px;
     list-style-type: none;
   }
-  li:hover {
+  & li:hover {
     position:relative;
     // Button should still have background color when sub-menu item is hovered
-    & > a {
+    & & > a {
       color: var(--active-nav-button-text-color);
-      color: $active-nav-button-text-color;
       background: var(--active-nav-button-color);
-      background: $active-nav-button-color;
     }
-    ul {
+    & ul {
       left: 0px;
-      top: $menu-height;
+      top: var(--menu-height);
       padding: 0px;
     }
-    .sg-ref {
+    & .sg-ref {
       color: var(--active-nav-button-ref-color);
-      color: $active-nav-button-ref-color;
     }
   }
 
-  li:hover ul li a, li ul li a.active {
+  & li:hover ul li a, & li ul li a.active {
     line-height: var(--sub-menu-height);
-    line-height: $sub-menu-height;
     background: var(--nav-item-color);
-    background: $nav-item-color;
     color: var(--nav-item-text-color);
-    color: $nav-item-text-color;
     display: block;
     width: 260px;
     border-top: 1px solid white;
-    .sg-ref {
+    & .sg-ref {
       color: var(--nav-item-ref-color);
-      color: $nav-item-ref-color;
     }
   }
 
-  a:hover, a.active, li:hover ul li a:hover, li ul li a.active {
+  & a:hover, & a.active, & li:hover ul li a:hover, & li ul li a.active {
     background: var(--active-nav-button-color);
-    background: $active-nav-button-color;
     color: var(--active-nav-button-text-color);
-    color: $active-nav-button-text-color;
     .sg-ref {
-      color: $active-nav-button-ref-color;
+      color: var(--active-nav-button-ref-color);
     }
   }
 
@@ -979,7 +938,7 @@ Styleguide 3.3.1
     }
   }
 
-  &:after {
+  & &:after {
     visibility: hidden;
     display: block;
     font-size: 0;
@@ -989,15 +948,13 @@ Styleguide 3.3.1
   }
 }
 
-.sg.toggle {
+& .sg.toggle {
   font-family: var(--secondary-font);
-  font-family: $secondary-font;
   font-weight: 300;
 
   cursor: pointer;
 
   color: var(--secondary-color);
-  color: $secondary-color;
 
   &.all-markup {
     margin: 0;
@@ -1034,99 +991,90 @@ Styleguide 3.4
 .sg.sg-section-header {
   @mixin default-font;
   background-color: var(--section-header-color);
-  background-color: $section-header-color;
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
 
-  a {
+  & a {
     text-decoration: none;
     display: block;
   }
 
-  a:hover {
+  & a:hover {
     i.fa {
       color: var(--secondary-color);
-      color: $secondary-color;
     }
   }
 
-  h1 {
+  & h1 {
     color: var(--section-header-text-color);
-    color: $section-header-text-color;
     padding: 13px;
     margin: 0;
     font-size: 1.777em;
 
-    .sg-reference-number {
+    & .sg-reference-number {
       color: var(--section-header-ref-color);
-      color: $section-header-ref-color;
     }
 
-    .sg-section-source {
+    & .sg-section-source {
       float: right;
       color: var(--section-header-source-text-color);
-      color: $section-header-source-text-color;
       font-size: 60%;
       line-height: 1.777em;
     }
   }
 
-  i.fa {
+  & i.fa {
     font-size: 14px;
     padding: 0.4em 0.7em;
     float: right;
-    color: $section-header-text-color.6;
+    color: var(--section-header-text-color.6);
     transition: all .4s ease-out;
   }
 
   /* Active header styles */
   .sg.designerToolVisible .sg.section.active:not(.main) & {
     background-color: var(--active-section-header-color);
-    background-color: $active-section-header-color;
     h1 {
       color: var(--active-section-header-text-color);
-      color: $active-section-header-text-color;
       .sg-reference-number {
-        color: $active-section-header-ref-color;
+        color: var(--active-section-header-ref-color);
       }
 
       .sg-section-source {
         color: var(--active-section-header-source-text-color);
-        color: $active-section-header-source-text-color;
       }
     }
     i.fa {
-      color: $active-section-header-text-color.6;
+      color: color(var(--active-section-header-text-color) lightness(6%));
     }
   }
 
 }
 
 .sg.sg-section.main {
-  .sg-section-header {
+  & .sg-section-header {
     background-color: transparent;
 
-    h1 {
+    & h1 {
       padding-top: 0;
       font-size: 2.369em;
       color: #333;
 
-      .sg-section-source {
+      & .sg-section-source {
         color: var(--main-section-header-source-text-color);
-        color: $main-section-header-source-text-color;
       }
     }
 
-    i.fa {
+    & i.fa {
       display: none;
     }
   }
 
-  .sg-reference-number {
+  & .sg-reference-number {
     display: none;
   }
 
-  .sg.sg-section-partial, .sg.sg-section-partial:last-child {
+  & .sg.sg-section-partial, & .sg.sg-section-partial:last-child {
     padding-top: 0;
     padding-bottom: 0;
     border: none;
@@ -1197,7 +1145,7 @@ Styleguide 3.5
 .sg.sg-section {
   margin-bottom: 20px;
 
-  .sg.sg-section-partial {
+  & .sg.sg-section-partial {
     position: relative;
 
     overflow: auto;
@@ -1205,25 +1153,24 @@ Styleguide 3.5
     padding: 1em;
 
     border: 1px solid var(--secondary-color);
-    border: 1px solid $secondary-color;
     border-bottom: none;
     background: #fff;
     width: 100%;
   }
 
-  .sg.sg-section-partial:last-child {
-    border-bottom: 1px solid $secondary-color;
+  & .sg.sg-section-partial:last-child {
+    border-bottom: 1px solid var(--secondary-color);
   }
 
-  .sg.sg-code-listing {
+  & .sg.sg-code-listing {
     padding: 0;
     background-color: #f8f8f8;
 
-    pre {
+    & pre {
       padding: 1em;
     }
 
-    .hljs {
+    & .hljs {
       overflow-y: auto;
 
       max-height: 400px;
@@ -1237,13 +1184,13 @@ Styleguide 3.5
       cursor: pointer;
     }
   }
-  .sg.modifier-list {
+  & .sg.modifier-list {
     @mixin default-font;
     list-style: none;
     padding: 1em;
-    > .sg-item {
+    & > .sg-item {
       line-height: 1.8em;
-      > strong {
+      & > strong {
         font-weight: bold;
       }
     }
@@ -1252,12 +1199,12 @@ Styleguide 3.5
 
 .sg.sg-body section.sg.sg-section:last-of-type {
   margin-bottom: 0;
-  min-height: calc(100vh - #{$header_height} - #{$footer-logo-height} - #{$wrapper-vertical-padding});
+  min-height: calc(100vh - #{var(--header_height)} - #{var(--footer-logo-height)} - #{var(--wrapper-vertical-padding)});
 }
 
 .sg.designerToolVisible .sg.sg-section.active:not(.main) .sg.sg-section-header {
   background-color: var(--primary-color);
-  background-color: color($primary-color lightness(17%));
+  background-color: color(var(--primary-color) lightness(17%));
 }
 
 .sg.sg-label {
@@ -1268,13 +1215,12 @@ Styleguide 3.5
   right: 0;
 
   border: 1px solid var(--secondary-color);
-  border: 1px solid $secondary-color;
   border-top: none;
   border-right: none;
   background: #fff.9;
 
-  span,
-  p {
+  & span,
+  & p {
     @mixin default-font;
     font-weight: 500;
 
@@ -1285,7 +1231,7 @@ Styleguide 3.5
     text-decoration: none;
   }
 
-  a {
+  & a {
     @mixin default-font;
     display: inline-block;
 
@@ -1295,19 +1241,19 @@ Styleguide 3.5
     text-decoration: none;
   }
 
-  a:hover {
-    i.fa {
-      color: $primary-color.7;
-      &:after {
+  & a:hover {
+    & i.fa {
+      color: var(--primary-color.7);
+      & &:after {
         opacity: 1;
       }
     }
   }
 
-  i.fa {
+  & i.fa {
     cursor: pointer;
 
-    color: $primary-color.2;
+    color: color(var(--primary-color) lightness(2%));
 
     transition: all .4s ease-out;
   }
@@ -1367,14 +1313,12 @@ Styleguide 4.1
   left: 100%;
 
   width: var(--designer-tool-width);
-  width: $designer-tool-width;
   height: 100%;
 
   z-index: 9000;
 
   @media (--mobile) {
     width: var(--designer-tool-width-mobile);
-    width: $designer-tool-width-mobile;
   }
 
   border-left: 1px solid #000.3;
@@ -1468,13 +1412,12 @@ Styleguide 4.1
         font-size: 16px;
         padding-left: 4px;
         color: var(--primary-color);
-        color: $primary-color.2;
         transition: all .4s ease-out;
       }
 
       &:hover {
         i.fa.fa-eye {
-          color: $primary-color.8;
+          color: color(var(--primary-color) lightness(8%));
         }
       }
     }
@@ -1530,7 +1473,6 @@ Styleguide 4.2
   padding-top: 8px;
 
   border-top: 1px solid var(--secondary-color);
-  border-top: 1px solid $secondary-color;
 }
 
 
@@ -1558,8 +1500,7 @@ Styleguide 4.3
 
   opacity: 0;
   color: var(--primary-action-color);
-  color: $primary-action-color;
-  background-color: $primary-action-color;
+  background-color: var(--primary-action-color);
   box-shadow: 0 0 3px 0; /* Inherits the font color */
 }
 
@@ -1589,8 +1530,7 @@ Styleguide 4.4
   position: fixed;
   z-index: 9100;
   top: 0;
-  right: calc(var(--designer-tool-width) + 2)%;
-  right: calc($designer-tool-width + 2%);
+  right: calc(var(--designer-tool-width) + 2%);
 
   transition: top .2s ease-in;
 }
@@ -1604,11 +1544,7 @@ Styleguide 4.4
   position: fixed;
   z-index: 99999;
   right: 0;
-  @if $navigation-arrows-visible == true {
-    display: inline;
-  } @else {
-    display: none;
-  }
+
   .next-nav, .prev-nav {
     float: left;
     cursor: pointer;
@@ -1617,7 +1553,7 @@ Styleguide 4.4
   .sg-navigation-link:link,
   .sg-navigation-link:visited
   {
-    color: $default-action-color;
+    color: var(--default-action-color);
     text-decoration: none;
   }
 }

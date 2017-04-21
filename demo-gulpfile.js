@@ -29,16 +29,14 @@ gulp.task('styleguide:applystyles', function() {
   return gulp.src('lib/app/css/styleguide-app.css')
     .pipe(postcss([
       require('postcss-partial-import'),
-      require('postcss-mixins'),
-      require('gulp-cssnext'),
       require('postcss-advanced-variables'),
+      require('postcss-mixins'),
       require('postcss-conditionals'),
-      require('postcss-color-function'),
-      require('postcss-color-alpha'),
-      require('postcss-nested'),
       require('postcss-custom-media'),
-      require('autoprefixer'),
-      require('postcss-inline-comment')
+      require("postcss-cssnext"),
+      require('postcss-inline-comment'),
+      require("postcss-browser-reporter"),
+      require("postcss-reporter")
     ]))
     .pipe(rename('styleguide-app.css'))
     .pipe(styleguide.applyStyles())
