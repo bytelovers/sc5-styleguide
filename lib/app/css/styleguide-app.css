@@ -296,7 +296,7 @@ input.sg {
 
   &:focus {
     background-color: var(--tertiary-color);
-    border: 1px solid $secondary-color;
+    border: 1px solid var(--secondary-color);
   }
 }
 
@@ -359,7 +359,7 @@ Styleguide 3.1.1
       padding-top: 30px;
       width: 100%;
     }
-    // Remove top margin from first header in markdown
+    /* Remove top margin from first header in markdown */
     & .sg.sg-heading:nth-of-type(1) {
       margin-top: 0;
       padding-top: 0;
@@ -896,7 +896,7 @@ Styleguide 3.3.1
   }
   & li:hover {
     position:relative;
-    // Button should still have background color when sub-menu item is hovered
+    /* Button should still have background color when sub-menu item is hovered */
     & & > a {
       color: var(--active-nav-button-text-color);
       background: var(--active-nav-button-color);
@@ -926,14 +926,14 @@ Styleguide 3.3.1
   & a:hover, & a.active, & li:hover ul li a:hover, & li ul li a.active {
     background: var(--active-nav-button-color);
     color: var(--active-nav-button-text-color);
-    .sg-ref {
+    & .sg-ref {
       color: var(--active-nav-button-ref-color);
     }
   }
 
   @media (--mobile) {
     padding: 0;
-    li {
+    & li {
       float: none;
     }
   }
@@ -948,7 +948,7 @@ Styleguide 3.3.1
   }
 }
 
-& .sg.toggle {
+.sg.toggle {
   font-family: var(--secondary-font);
   font-weight: 300;
 
@@ -1000,7 +1000,7 @@ Styleguide 3.4
   }
 
   & a:hover {
-    i.fa {
+    & i.fa {
       color: var(--secondary-color);
     }
   }
@@ -1032,19 +1032,19 @@ Styleguide 3.4
   }
 
   /* Active header styles */
-  .sg.designerToolVisible .sg.section.active:not(.main) & {
+  & .sg.designerToolVisible .sg.section.active:not(.main) & {
     background-color: var(--active-section-header-color);
-    h1 {
+    & h1 {
       color: var(--active-section-header-text-color);
-      .sg-reference-number {
+      & .sg-reference-number {
         color: var(--active-section-header-ref-color);
       }
 
-      .sg-section-source {
+      & .sg-section-source {
         color: var(--active-section-header-source-text-color);
       }
     }
-    i.fa {
+    & i.fa {
       color: color(var(--active-section-header-text-color) lightness(6%));
     }
   }
@@ -1176,7 +1176,7 @@ Styleguide 3.5
       max-height: 400px;
     }
 
-    a.sg-show-section {
+    & a.sg-show-section {
       display: block;
 
       padding: .8em 1.2em;
@@ -1243,7 +1243,8 @@ Styleguide 3.5
 
   & a:hover {
     & i.fa {
-      color: var(--primary-color.7);
+      color: var(--primary-color);
+      opacity: .7;
       & &:after {
         opacity: 1;
       }
@@ -1325,7 +1326,7 @@ Styleguide 4.1
 
   transition: left .3s ease-out;
 
-  .sg-handle {
+  & .sg-handle {
     @mixin default-font;
     position: absolute;
     top: 220px;
@@ -1351,7 +1352,7 @@ Styleguide 4.1
     transform-origin: left top;
   }
 
-  .close {
+  & .close {
     position: absolute;
     top: 0;
     right: 0;
@@ -1364,17 +1365,17 @@ Styleguide 4.1
   }
 
   &.sg-visible {
-    left: calc(100% - $designer-tool-width);
+    left: calc(100% - var(--designer-tool-width));
     @media (--mobile) {
-      left: calc(100% - $designer-tool-width-mobile);
+      left: calc(100% - var(--designer-tool-width-mobile));
     }
 
-    .sg-handle {
+    & .sg-handle {
       left: 0;
     }
   }
 
-  .sg-info-text {
+  & .sg-info-text {
     margin-top: 10px;
   }
 }
@@ -1393,22 +1394,22 @@ Styleguide 4.1
 
   background: white;
 
-  ul {
+  & ul {
     margin: 0;
     padding: 0;
     list-style: none;
   }
 
-  label {
+  & label {
     display: block;
 
-    i.fa {
+    & i.fa {
       padding-left: 8px;
       color: red;
     }
 
-    a {
-      i.fa.fa-eye {
+    & a {
+      & i.fa.fa-eye {
         font-size: 16px;
         padding-left: 4px;
         color: var(--primary-color);
@@ -1416,13 +1417,13 @@ Styleguide 4.1
       }
 
       &:hover {
-        i.fa.fa-eye {
+        & i.fa.fa-eye {
           color: color(var(--primary-color) lightness(8%));
         }
       }
     }
 
-    .sg-variable-source {
+    & .sg-variable-source {
       display: block;
       opacity: 0.5;
       font-size: 80%;
@@ -1430,16 +1431,16 @@ Styleguide 4.1
 
   }
 
-  input {
+  & input {
     display: inline;
   }
 
-  input[type='text'] {
+  & input[type='text'] {
     box-sizing: border-box;
     width: 100%;
   }
 
-  input[type='color'] {
+  & input[type='color'] {
     background: transparent;
     position: absolute;
     right: 0;
@@ -1545,13 +1546,13 @@ Styleguide 4.4
   z-index: 99999;
   right: 0;
 
-  .next-nav, .prev-nav {
+  & .next-nav, & .prev-nav {
     float: left;
     cursor: pointer;
   }
-  .sg-navigation-link,
-  .sg-navigation-link:link,
-  .sg-navigation-link:visited
+  & .sg-navigation-link,
+  & .sg-navigation-link:link,
+  & .sg-navigation-link:visited
   {
     color: var(--default-action-color);
     text-decoration: none;
@@ -1573,7 +1574,7 @@ Styleguide 4.4
   border-top-left-radius: 0;
   border-top-right-radius: 0;
   background-color: #d20000;
-  i.fa {
+  & i.fa {
     font-size: 20px;
 
     animation: socket-disconnect-pulse 3s linear infinite;

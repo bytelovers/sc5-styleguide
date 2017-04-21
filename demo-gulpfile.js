@@ -32,7 +32,6 @@ gulp.task('styleguide:applystyles', function() {
       require('postcss-advanced-variables'),
       require('postcss-mixins'),
       require('postcss-conditionals'),
-      require('postcss-custom-media'),
       require("postcss-cssnext"),
       require('postcss-inline-comment'),
       require("postcss-browser-reporter"),
