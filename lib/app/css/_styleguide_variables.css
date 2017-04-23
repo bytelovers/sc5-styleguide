@@ -1,6 +1,6 @@
 :root {
     /* Main color definitions */
-    --primary-color: #FFFFFF;
+    --primary-color: #1C3849;
     --secondary-color: #E4E4E4;
     --tertiary-color: #F7FCF1;
     --cuaternary-color: #F7FCF1;
@@ -31,11 +31,11 @@
     --section-header-color: var(--primary-color);
     --section-header-ref-color: #FFFFFF;
     --section-header-text-color: var(--secondary-color);
-    --section-header-source-text-color: var(--secondary-color);
+    --section-header-source-text-color: color(var(--secondary-color) alpha(-40%));
     --active-section-header-color: color(var(--primary-color) lightness(17%));
     --active-section-header-ref-color: var(--section-header-ref-color);
     --active-section-header-text-color: var(--section-header-text-color);
-    --active-section-header-source-text-color: var(--primary-color);
+    --active-section-header-source-text-color: color(var(--primary-color) alpha(-40%));
     --main-section-header-source-text-color: var(--secondary-color);
 
     /* Fonts */
@@ -59,7 +59,7 @@
     --footer-padding: 2em;
     --footer-logo-height: 42px;
     --header_height: 0;
-    --default-action-light: lighten(var(--default-action-color), var(--action-color-change));
+    --default-action-light: color(var(--default-action-color) lightness(var(--action-color-change)));
     --default-action-dark: color(var(--default-action-color) blackness(var(--action-color-change)));
 }
 

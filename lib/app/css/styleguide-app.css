@@ -618,7 +618,6 @@ Styleguide 3.2.1
   padding: 0;
   color: #fff;
   background: var(--header-background-color);
-  background: var(--header-background-color);
 
   & pre {
     clear: both;
@@ -897,7 +896,7 @@ Styleguide 3.3.1
   & li:hover {
     position:relative;
     /* Button should still have background color when sub-menu item is hovered */
-    & & > a {
+    & > a {
       color: var(--active-nav-button-text-color);
       background: var(--active-nav-button-color);
     }
@@ -938,7 +937,7 @@ Styleguide 3.3.1
     }
   }
 
-  & &:after {
+  &:after {
     visibility: hidden;
     display: block;
     font-size: 0;
@@ -1199,7 +1198,7 @@ Styleguide 3.5
 
 .sg.sg-body section.sg.sg-section:last-of-type {
   margin-bottom: 0;
-  min-height: calc(100vh - #{var(--header_height)} - #{var(--footer-logo-height)} - #{var(--wrapper-vertical-padding)});
+  min-height: calc(100vh - var(--header_height) - var(--footer-logo-height) - var(--wrapper-vertical-padding));
 }
 
 .sg.designerToolVisible .sg.sg-section.active:not(.main) .sg.sg-section-header {
@@ -1217,7 +1216,8 @@ Styleguide 3.5
   border: 1px solid var(--secondary-color);
   border-top: none;
   border-right: none;
-  background: #fff.9;
+  background: #fff;
+  opacity: 0.9;
 
   & span,
   & p {
@@ -1245,7 +1245,7 @@ Styleguide 3.5
     & i.fa {
       color: var(--primary-color);
       opacity: .7;
-      & &:after {
+      &:after {
         opacity: 1;
       }
     }
